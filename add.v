@@ -3,7 +3,7 @@ module add (
     input wire [3:0] num2,
 
     output wire [3:0] out,
-    output wire cout,
+    output wire cout
 );
 
 wire cout0, cout1, cout2;
@@ -11,7 +11,7 @@ wire cout0, cout1, cout2;
 fadd u0 (
     .a(num1[0]),
     .b(num2[0]),
-    .cin(1'b1),
+    .cin(1'b0),
     .s(out[0]),
     .cout(cout0)
 );

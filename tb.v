@@ -14,8 +14,33 @@ add u0 (
     .cout (cout)
 );
 
-initial begin
-    // Insira o seu teste aqui
+integer i, j;
+reg [4:0] expected;
+
+initial 
+begin
+
+    for (i = 0; i < 16; i = i + 1) 
+    begin
+        for (j = 0; j < 16; j = j + 1) 
+        begin
+            num1 = i;
+            num2 = j;
+            expected = i + j;
+            #1;
+            if({cout, out} !== expected) 
+            begin
+                $display("ERRO: %d + %d = %d, -> %b (cout=%b, out=%b)", i, j, expected, {cout, out}, cout, out);
+            end 
+            else 
+            begin
+                $display("OK: %d + %d = %b", i, j, {cout, out});
+            end
+        end
+    end
+
+    $finish;
 end
+
 
 endmodule
